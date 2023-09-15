@@ -1,14 +1,8 @@
-import {  useContext} from "react";
-import { digitContext } from "../context/digitContext";
+import { useCalculator } from "../context/Context";
 
-
-const Display = (props)=>{
-    const {displayDigit} = useContext(digitContext);
-
-
-return(
-    <label>{displayDigit}</label>
-)
-}
+const Display = () => {
+  const { displayValue } = useCalculator();
+  return <label>{displayValue}</label>;
+};
 
 export default Display;

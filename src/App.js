@@ -1,16 +1,13 @@
-import { useState } from "react";
 import "./App.css";
 import Calculator from "./components/calculator.component";
-import { digitContext } from "./context/digitContext";
+import { CalculatorProvider } from "./context/Context";
 
 function App() {
-  const [displayDigit, setDisplayDigit] = useState("0");
-
   return (
     <>
-      <digitContext.Provider value={{ displayDigit, setDisplayDigit }}>
+      <CalculatorProvider>
         <Calculator />
-      </digitContext.Provider>
+      </CalculatorProvider>
     </>
   );
 }

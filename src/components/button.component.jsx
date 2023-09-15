@@ -1,17 +1,13 @@
-import { useContext, useEffect } from "react";
-import { digitContext } from "../context/digitContext";
-
-const Button = (props)=>{
-    const {setDisplayDigit} = useContext(digitContext);
-    
-    const handleClick=(event) =>{
-        const value=parseInt(event.target.innerHTML);
-        setDisplayDigit(value);
-    }
-
-    return(
-        <button type="button" onClick={handleClick}>{props.string}</button>
-    )
-}
+const Button = ({ symbol, type, clickHandler, context }) => {
+  return (
+    <button
+      className={`${type}-button`}
+      type={type}
+      onClick={() => clickHandler(symbol, context)}
+    >
+      {symbol}
+    </button>
+  );
+};
 
 export default Button;

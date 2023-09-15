@@ -1,33 +1,41 @@
-import Button from "./button.component";
+import NumberButton from "./number-button.component";
 import Display from "./display.component";
-import { useContext } from "react";
-import { digitContext } from "../context/digitContext";
+import DecimalButton from "./decimal-button.component";
+import { useCalculator } from "../context/Context";
+import BackButton from "./back-button.component";
 
-const Calculator = ()=>{
-    const {displayDigit} = useContext(digitContext);
-    return(
-        <div className="App">
-            <h1>Calculator</h1>
-            <Display />
-            <div className="buttons-container">
-                <div className="row">
-                    <Button string="7" />
-                    <Button string="8" />
-                    <Button string="9" />
-                </div>
-                <div className="row">
-                    <Button string="4" />
-                    <Button string="5" />
-                    <Button string="6" />
-                </div>
-                <div className="row">
-                    <Button string="1" />
-                    <Button string="2" />
-                    <Button string="3" />
-                </div>
-            </div>
+const Calculator = () => {
+  const context = useCalculator();
+  return (
+    <div className="App">
+      <h1>Calculator</h1>
+      <Display />
+      <div className="buttons-container">
+        <div className="row">
+          <BackButton symbol={"←"} type="back" context={context} />
+        </div>
+        <div className="row">
+          <NumberButton digit={7} type="number" />
+          <NumberButton digit={8} type="number" />
+          <NumberButton digit={9} type="number" />
+        </div>
+        <div className="row">
+          <NumberButton digit={4} type="number" />
+          <NumberButton digit={5} type="number" />
+          <NumberButton digit={6} type="number" />
+        </div>
+        <div className="row">
+          <NumberButton digit={1} type="number" />
+          <NumberButton digit={2} type="number" />
+          <NumberButton digit={3} type="number" />
+        </div>
+        <div className="row">
+          <NumberButton digit={0} type="number" />
+          <DecimalButton symbol={"."} type="decimal" context={context} />
+        </div>
+      </div>
     </div>
-    )
-}
+  );
+};
 
 export default Calculator;
