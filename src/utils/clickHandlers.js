@@ -16,7 +16,7 @@ export function handleOperatorClick(operator) {
 export function handleDecimalClick(context) {
   const { displayValue, setDisplayValue } = context;
   // Lógica para manejar el clic en el punto decimal
-  if (!displayValue.includes(".")) {
+  if (!displayValue.includes(".") || displayValue === "0") {
     setDisplayValue(displayValue + ".");
   }
 }
